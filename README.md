@@ -23,7 +23,7 @@ pip install djitellopy opencv-python numpy matplotlib scipy scikit-image
    ```
 2. **Ejecutar el script principal**:
    ```bash
-   python seguimiento_tello.py
+   python Delauney.py
    ```
 
 ## Uso
