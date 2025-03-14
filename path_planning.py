@@ -1,28 +1,28 @@
-# ----------------------------------------------------------------------------------
-# Este script implementa un sistema de planificación de trayectoria para un dron Tello
-# basado en la detección de líneas en imágenes. Se utilizan técnicas de segmentación
-# en el espacio de color HSV y la triangulación de Delaunay para determinar una ruta
-# entre líneas izquierda y derecha, ofreciendo así una guía de navegación. El flujo
-# básico es el siguiente:
-#   1. Captura de la transmisión de video del dron Tello.
-#   2. Procesamiento de la imagen para detección de líneas (segmentación HSV, operaciones
-#      morfológicas, eliminación de objetos pequeños y detección de bordes).
-#   3. Identificación de líneas izquierda/derecha mediante análisis de componentes
-#      conectados (regiones) y clasificación basada en centroides.
-#   4. Planificación de trayectoria utilizando triangulación de Delaunay entre los
-#      puntos muestreados de ambas líneas y posterior generación de un camino intermedio.
-#   5. Visualización en tiempo real o con matplotlib, dependiendo del parámetro
-#      `realtime`.
-#
-# Uso y contexto:
-#   - Este script requiere la librería djitellopy para conectarse con el dron Tello y
-#     recibir la transmisión de video, así como las librerías de procesamiento de
-#     imágenes (OpenCV, NumPy, scikit-image).
-#   - Se asume que el dron tiene suficiente batería y se encuentra en un entorno con
-#     líneas visibles que el algoritmo pueda detectar.
-#   - Para iniciar el procesamiento en tiempo real, se ejecuta el script y se espera la
-#     orden 'q' para terminar la sesión.
-# ----------------------------------------------------------------------------------
+"""
+Este script implementa un sistema de planificación de trayectoria para un dron Tello
+basado en la detección de líneas en imágenes. Se utilizan técnicas de segmentación
+en el espacio de color HSV y la triangulación de Delaunay para determinar una ruta
+entre líneas izquierda y derecha, ofreciendo así una guía de navegación. El flujo
+básico es el siguiente:
+    1. Captura de la transmisión de video del dron Tello.
+    2. Procesamiento de la imagen para detección de líneas (segmentación HSV, operaciones
+        morfológicas, eliminación de objetos pequeños y detección de bordes).
+    3. Identificación de líneas izquierda/derecha mediante análisis de componentes
+        conectados (regiones) y clasificación basada en centroides.
+    4. Planificación de trayectoria utilizando triangulación de Delaunay entre los
+        puntos muestreados de ambas líneas y posterior generación de un camino intermedio.
+    5. Visualización en tiempo real o con matplotlib, dependiendo del parámetro
+        `realtime`.
+
+Uso y contexto:
+    - Este script requiere la librería djitellopy para conectarse con el dron Tello y
+        recibir la transmisión de video, así como las librerías de procesamiento de
+        imágenes (OpenCV, NumPy, scikit-image).
+    - Se asume que el dron tiene suficiente batería y se encuentra en un entorno con
+        líneas visibles que el algoritmo pueda detectar.
+    - Para iniciar el procesamiento en tiempo real, se ejecuta el script y se espera la
+        orden 'q' para terminar la sesión.
+"""
 
 
 import cv2
